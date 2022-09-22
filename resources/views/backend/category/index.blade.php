@@ -15,24 +15,34 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1>Create Category</h1>
+                <h1>View Category</h1>
                 
-                    <a href="{{ route('categories.index') }}">All Post</a>
-               
-                <form action="{{ route('categories.store') }}" method="post">
-                    @csrf
-                    <div class="from-group">
-                        <label for="name">Category Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Category Name"> 
-                    </div>
-                    <div class="from-group">
-                        <label for="name">Category Description</label>
-                        <input type="text" class="form-control" id="name" name="description" placeholder="Category Description"> 
-                    </div>
-                    <div class="from-group">
-                        <input type="submit" class="btn btn-success" value="Submit"> 
-                    </div>
-                </form>
+  <table class="table table-bordered table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Sl no</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ( $categories as $categorie )
+        <tr>
+      <th scope="row">{{ $loop->iteration }}</th>
+      <td>{{ $categorie->name }}</td>
+      <td>{{ $categorie->description }}</td>
+      <td>EDIT || DELETE</td>
+    
+    
+    </tr>
+    @endforeach
+    
+   
+  </tbody>
+</table>          
+                
             </div>
         </div>
     </div>
@@ -43,3 +53,8 @@
     
   </body>
 </html>
+
+
+
+
+
