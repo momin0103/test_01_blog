@@ -93,7 +93,13 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        //  $data['category'] = $category;
+        // return view('backend.category.edit', $data);
+
+
+        // return view('backend.category.edit', ['category' => $category]);
+
+        return view('backend.category.edit', compact('category'));
     }
 
     /**
@@ -105,8 +111,33 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+         // dd($request->all());
+        
+        // $data['name'] = $request->name;
+        // $data['description'] = $request->description;
+        // $category->update($data);
+        // return redirect()->route('categories.index');
+        
+
+        // $data = Category::find($category->id);
+        // $data->name = $request->name;
+        // $data->description = $request->description;
+        // $data->save();
+        // return redirect()->route('categories.index');
+
+       
+        // Category::where('id', $category->id)->update([
+        //     'name' => $request->name,
+        //     'description' => $request->description,
+        // ]);
+
+        // return redirect()->route('categories.index');
+
+        $category->update($request->all());
+        return redirect()->route('categories.index');
+
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -116,6 +147,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('categories.index');
     }
 }
