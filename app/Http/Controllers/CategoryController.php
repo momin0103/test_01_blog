@@ -58,6 +58,11 @@ class CategoryController extends Controller
 
         // return back();
          
+    $request->validate([
+    'name' => 'required|max:255',
+    'description' => 'required',
+   
+]);
 
 
         Category::create([
